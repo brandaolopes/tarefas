@@ -9,6 +9,7 @@ import Task from '../components/Task'
 import moment from 'moment'
 import 'moment/locale/pt-br'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import AddTask from './AddTask'
 
 
 
@@ -55,6 +56,7 @@ export default class TaskList extends Component {
     state= {
         showDoneTasks: true,
         visibleTasks: [],
+        showAddTask: true,
         tasks: [{
             id: Math.random(),
             desc: 'Comprar Livro de React-Native',
@@ -102,6 +104,8 @@ export default class TaskList extends Component {
     render () {
         return (
             <View style={styles.container}>
+                <AddTask isVisible={this.state.showAddTask}
+                onCancel={() => this.setState({showAddTask: false})}/>
                 <ImageBackground source={todayImage}
                 style={styles.background}>
                 <View style={styles.iconBar}>
