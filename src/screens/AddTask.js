@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react'
 import { Modal,
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     },
     date: {
         fontFamily: commonStyles.fontFamily,
-        fontSize: 20,
+        fontSize: 15,
         marginLeft: 15,
     },
 })
@@ -64,6 +65,18 @@ export default class AddTask extends Component {
         ...initialState,
     }
     
+    save= () => {
+        const newTask = {
+            desc: this.state.desc,
+            date: this.state.date,
+        }
+        
+        if (this.props.onSave(newTask)){
+            this.props.onSave(newTask)
+        }
+        this.setState({ ...initialState })
+    }
+
     getDatePicker = () => {
         let datePicker = <DateTimePicker 
             value={this.state.date}
@@ -109,7 +122,7 @@ export default class AddTask extends Component {
                         <TouchableOpacity onPress={this.props.onCancel}>
                             <Text style={styles.button}>Cancelar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.save}>
                             <Text style={styles.button}>Salvar</Text>
                         </TouchableOpacity>
                     </View>
