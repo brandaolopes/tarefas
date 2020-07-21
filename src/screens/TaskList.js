@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 
 const today = moment().locale('pt-br').format('ddd, D [de] MMMM')
 
-const initialState= {
+const initialState = {
     showDoneTasks: true,
     visibleTasks: [],
     showAddTask: false,
